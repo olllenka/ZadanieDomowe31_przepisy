@@ -18,7 +18,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home(Model model){
-        model.addAttribute("recipes", recipeService.find8MostPopular());
+        model.addAttribute("recipes", recipeService.find4MostPopular());
         return "home";
     }
 }

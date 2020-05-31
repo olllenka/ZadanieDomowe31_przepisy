@@ -17,7 +17,7 @@ import java.util.Optional;
 @Repository
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
 
-    List<Recipe> findTop8ByOrderByLikeCounterDesc();
+    List<Recipe> findTop4ByOrderByLikeCounterDescTitleAsc();
 
     Optional<Recipe> findById(Long id);
 

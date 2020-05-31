@@ -17,8 +17,8 @@ public class RecipeService {
         this.recipeRepository = recipeRepository;
     }
 
-    public List<Recipe> find8MostPopular(){
-        return recipeRepository.findTop8ByOrderByLikeCounterDesc();
+    public List<Recipe> find4MostPopular(){
+        return recipeRepository.findTop4ByOrderByLikeCounterDescTitleAsc();
     }
 
     public List<Recipe> findAllSorted(String sort) {
