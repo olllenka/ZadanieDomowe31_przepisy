@@ -1,12 +1,11 @@
 package com.example.cookbook.recipe;
 
-import com.example.cookbook.dictionary.Category;
-import com.example.cookbook.dictionary.Diet;
-import com.example.cookbook.dictionary.Difficulty;
-
+import com.example.cookbook.dictionary.category.Category;
+import com.example.cookbook.dictionary.diet.Diet;
+import com.example.cookbook.dictionary.difficulty.Difficulty;
+import com.example.cookbook.recipeIngredient.RecipeIngredient;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.ManyToOne;
 
@@ -19,11 +18,11 @@ public class Recipe {
     private String title;
 
     @ManyToOne
-    @JoinColumn(name="category_id", referencedColumnName = "id")
+    @JoinColumn
     private Category category;
 
-    @OneToMany(mappedBy = "recipe", cascade = CascadeType.PERSIST)
-    private List<RecipeIngredient> ingredients = new ArrayList<>();
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
+    private List<RecipeIngredient> ingredients;
 
     private String description;
 

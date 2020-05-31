@@ -1,6 +1,6 @@
-package com.example.cookbook.dictionary;
+package com.example.cookbook.dictionary.unit;
 
-import com.example.cookbook.recipe.RecipeIngredient;
+import com.example.cookbook.recipeIngredient.RecipeIngredient;
 
 import javax.persistence.*;
 import java.util.List;

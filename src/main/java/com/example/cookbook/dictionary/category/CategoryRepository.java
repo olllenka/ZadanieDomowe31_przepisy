@@ -1,4 +1,4 @@
-package com.example.cookbook.dictionary;
+package com.example.cookbook.dictionary.category;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

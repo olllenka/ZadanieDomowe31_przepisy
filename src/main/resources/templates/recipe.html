@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cookbook</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+<div class="m-5">
+<h1 th:text="${recipe.title}">Tytuł przepisu</h1><br/>
+<h3 th:text="|Kategoria: ${recipe.category}|">Kategoria</h3><br/>
+<h6 th:text="|Czas przygotowania: ${recipe.preparationTimeInMinutes} min|">Czas przygotowania</h6><br/>
+<h6 th:text="|Poziom trdności: ${recipe.difficulty}|">Trudność</h6><br/>
+
+    <div class="form-group">
+        <h6>Składniki:</h6>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" th:each="ingredient : ${recipe.ingredients}">
+            <div th:text="|${ingredient.name}: ${ingredient.amount} ${ingredient.unit.name}|"></div>
+        </li>
+    </ul><br/>
+
+<h6 th:text="|Przygotowanie:|"></h6><br/>
+<h6 th:text="${recipe.description}">Opis</h6><br/>
+
+
+    <form  th:action="@{'/recipe/' + ${recipe.id} + '?likeIt='}" method="get">
+        <button class="btn btn-primary" type="submit" name="likeIt" value="Lubie">Lubie to</button>
+    </form>
+
+<a th:href="@{'/edit/' + ${recipe.id}}" th:text="|Edytuj przepis|"></a><br/>
+<a th:href="@{'/remove/' + ${recipe.id}}" th:text="|Usuń przepis|"></a><br/>
+<a th:href="@{/recipes}" th:text="|Wróć do listy przepisów|"></a>
+</div>
+
+</body>
+</html>

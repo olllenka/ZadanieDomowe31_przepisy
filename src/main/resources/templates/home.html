@@ -7,11 +7,15 @@
 </head>
 <body>
     <h1>Najpopularniejsze przepisy</h1>
-    <a th:href="@{/recipe}" th:text="|Dodaj przepis|"></a>
+    <a th:href="@{/recipeForm}" th:text="|Dodaj przepis|"></a>
     <a th:href="@{/recipes}" th:text="|Znajdź przepis|"></a>
-    <ul>
-        <li th:each="recipe: ${recipes}" th:text="|${recipe.title}|">Tytuł przepisu</li>
-    </ul>
 
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" th:each="recipe: ${recipes}">
+            <a th:href="@{'/recipe/' + ${recipe.id}}">
+                <div th:text="|${recipe.title}|">Tytuł przepisu</div>
+            </a>
+        </li>
+    </ul>
 </body>
 </html>

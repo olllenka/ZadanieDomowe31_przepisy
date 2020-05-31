@@ -1,6 +1,7 @@
-package com.example.cookbook.recipe;
+package com.example.cookbook.recipeIngredient;
 
-import com.example.cookbook.dictionary.Unit;
+import com.example.cookbook.dictionary.unit.Unit;
+import com.example.cookbook.recipe.Recipe;
 
 import javax.persistence.*;
 
@@ -15,10 +16,7 @@ public class RecipeIngredient {
 
     @ManyToOne
     private Recipe recipe;
-/*
-    @ManyToOne
-    private Ingredient ingredient;
- */
+
     @ManyToOne
     private Unit unit;
 
@@ -50,16 +48,7 @@ public class RecipeIngredient {
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
     }
-/*
-    public Ingredient getIngredient() {
-        return ingredient;
-    }
 
-    public void setIngredient(Ingredient ingredient) {
-        this.ingredient = ingredient;
-    }
-
- */
     public Unit getUnit() {
         return unit;
     }

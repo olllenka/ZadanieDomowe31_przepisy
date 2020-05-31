@@ -1,10 +1,5 @@
 package com.example.cookbook.recipe;
 
-
-import com.example.cookbook.dictionary.Category;
-
-import java.util.List;
-
 public class RecipeFilters {
 
     private String title;

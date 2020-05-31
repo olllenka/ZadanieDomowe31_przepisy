@@ -1,4 +1,4 @@
-package com.example.cookbook.dictionary;
+package com.example.cookbook.dictionary.difficulty;
 
 import com.example.cookbook.recipe.Recipe;
 
