@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Cookbook</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<head th:include="fragments :: head">
 </head>
 <body>
+<div th:replace="fragments :: header"></div>
+
 <div class="m-5">
-    <h1 th:text="${mode == 'edit' ? 'Edycja przepisu' : 'Dodawanie nowego przepisu'}"></h1>
+    <h1 style="text-align: center" class="mt-4" th:text="${mode == 'edit' ? 'Edycja przepisu' : 'Dodawanie nowego przepisu'}"></h1>
     <a th:href="@{/recipes}" th:text="|Wróć do listy przepisów|"></a><br/>
 
-    <form method="post" th:action = "${mode == 'edit' ? '/edit' : '/recipeForm'}" th:object="${recipe}">
-
-        <br/>
+    <form method="post" th:action = "${mode == 'edit' ? '/edit' : '/recipeForm'}" th:object="${recipe}"><br/>
         <div class="form-group">
             <label for="recipeTitle"><h3>Tytuł</h3></label>
             <input type="text" class="form-control" id="recipeTitle" th:field="*{title}">
@@ -52,11 +49,9 @@
         </div>
         <ul>
             <li th:each="ingredient, stat : *{ingredients}">
-
                 <div th:if="${mode == 'edit'}">
                     <input readonly hidden type="number" id="ingredientId" th:field="*{ingredients[__${stat.index}__].id}">
                 </div>
-
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="ingredientName">Nazwa</label>
@@ -85,8 +80,8 @@
         <div th:if="${mode == 'edit'}" class="form-group">
             <input readonly hidden type="number" class="form-control" id="recipeId" th:field="*{id}">
         </div>
-        <button type="submit" class="btn btn-primary" th:text="${mode == 'edit' ? 'Edytuj' : 'Dodaj'}"></button>
-        <button type="reset" class="btn btn-primary" th:text="|Wyczyść|"></button>
+        <button type="submit" class="btn btn-dark" th:text="${mode == 'edit' ? 'Edytuj' : 'Dodaj'}"></button>
+        <button type="reset" class="btn btn-dark" th:text="|Wyczyść|"></button>
     </form>
 </div>
 </body>

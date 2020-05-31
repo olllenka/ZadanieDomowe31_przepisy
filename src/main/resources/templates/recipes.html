@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Cookbook</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<head th:include="fragments :: head">
 </head>
 <body>
+<div th:replace="fragments :: header"></div>
 
-<div class="content">
-    <h1 style="text-align: center" class="mt-4">Wszystkie przepisy</h1>
-    <a th:href="@{/recipeForm}" th:text="|Dodaj przepis|"></a>
+<div class="m-5">
+    <h1 style="text-align: center" class="mt-4">Wszystkie przepisy</h1><br/>
 
     <form action="/recipes" method="get" th:object="${filters}">
-        <input type="text" placeholder="Tytuł przepisu" th:field="*{title}">
-        <input type="text" placeholder="Kategoria" th:field="*{category}">
-        <input type="text" placeholder="Dieta" th:field="*{diet}">
-        <input type="text" placeholder="Trudność" th:field="*{difficulty}">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <input class="form-control" type="text" placeholder="Tytuł przepisu" th:field="*{title}">
+            </div>
+            <div class="form-group col-md-3">
+                <input class="form-control" type="text" placeholder="Kategoria" th:field="*{category}">
+            </div>
+            <div class="form-group col-md-3">
+                <input class="form-control" type="text" placeholder="Dieta" th:field="*{diet}">
+            </div>
+            <div class="form-group col-md-3">
+                <input class="form-control" type="text" placeholder="Trudność" th:field="*{difficulty}">
+            </div>
 
-        <button type="submit" class="btn btn-primary" th:text="|Filtruj|"></button>
-        <button type="reset" class="btn btn-primary" th:text="|Wyczyść|"></button>
+            <div class="form-group col-md-6">
+                <button type="submit" class="btn btn-dark" th:text="|Filtruj|"></button>
+                <button type="reset" class="btn btn-dark" th:text="|Wyczyść|"></button>
+            </div>
+        </div>
     </form>
 
     <table class="table">
-        <thead>
+        <thead class="thead-light">
         <tr>
             <th>
                 <a th:href="@{'/recipes?sort=title'}">

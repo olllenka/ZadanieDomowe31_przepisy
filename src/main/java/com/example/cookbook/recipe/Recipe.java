@@ -4,6 +4,7 @@ import com.example.cookbook.dictionary.category.Category;
 import com.example.cookbook.dictionary.diet.Diet;
 import com.example.cookbook.dictionary.difficulty.Difficulty;
 import com.example.cookbook.recipeIngredient.RecipeIngredient;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.util.List;
@@ -36,6 +37,16 @@ public class Recipe {
 
     @ManyToOne
     private Difficulty difficulty;
+
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public Recipe() {
     }
